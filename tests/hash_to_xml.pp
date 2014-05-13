@@ -20,9 +20,19 @@ $hash = {
     }
 }
 
+$opts = {
+  'rootname' => 'test',
+  'xmldeclaration' => true,
+}
+
 $xml_data = hash_to_xml($hash)
+$xml_data2 = hash_to_xml($hash, $opts)
 
 file { '/tmp/sample.xml':
   ensure  => file,
   content => $xml_data
+}
+file { '/tmp/sample2.xml':
+  ensure  => file,
+  content => $xml_data2
 }
